@@ -1,7 +1,11 @@
 {
   "name": "@ir-managex/common",
   "version": "1.0.2",
-  "main": "index.js",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files":[
+    "build/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "git": "git add . && git commit -m \"updates\" && git push -u origin main"
