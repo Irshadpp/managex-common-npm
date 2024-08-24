@@ -9,6 +9,7 @@ declare module 'express-serve-static-core' {
   }
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction) =>{
+        console.log(req, "-------------", req.header,"-------------", req.headers, "-------------",req)
         const authHead = req.headers.authorization;
         const secret = process.env.JWT_ACCESS_SECRET as string;
         if(!secret){
