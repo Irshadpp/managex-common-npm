@@ -8,9 +8,12 @@ declare module 'express-serve-static-core' {
     }
   }
 
-export const requireAuth = (secret: string) =>{
-    return (req: Request, res: Response, next: NextFunction) =>{
+export const requireAuth = (req: Request, res: Response, next: NextFunction) =>{
         const authHead = req.headers.authorization;
+        const secret = process.env.JWT_ACCESS_SECRET as string;
+        if(!secret){
+            throw new Error("Can't access JWT_ACCESS_SECRET in requireAuth");
+        }
         
         if(authHead){
             const token = authHead.split(' ')[1];
@@ -26,4 +29,3 @@ export const requireAuth = (secret: string) =>{
             throw new Error("Token not found");
         }
     }
-}
