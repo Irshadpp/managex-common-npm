@@ -1,7 +1,7 @@
 import Jwt from "jsonwebtoken"
 
 export interface JWTUserPayload{
-    user: string;
+    userId: string;
     role: string;
     organization: string;
 }
