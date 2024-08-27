@@ -11,7 +11,7 @@ export const generateJwtAccessToken = (payload: JWTUserPayload, secret: string) 
         payload,
         secret,
         {
-            expiresIn:"1h"
+            expiresIn:"1m"
         }
     )
 }
