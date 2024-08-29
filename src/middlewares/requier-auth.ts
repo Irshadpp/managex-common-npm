@@ -21,17 +21,20 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) =>{
         if(!user) throw new ForbiddenError();
         req.user = user;
         next();
-        // if(authHead){
-        //     const token = authHead.split(' ')[1];
-
-        //     try {
-        //         const user = verifyJwt(token, secret) as JWTUserPayload;
-        //         req.user = user;
-        //         next();
-        //     } catch (error) {
-        //         throw new NotAuthorizedError();
-        //     }
-        // }else{
-        //     throw new Error("Token not found");
-        // }
+        try {
+            const user = verifyJwt(token, secret);
+    
+            if (user === null) {
+                return res.status(401).send({ message: "Token expired" });
+            }
+    
+            if (!user) {
+                return next(new ForbiddenError());
+            }
+    
+            req.user = user; 
+            next();
+        } catch (error) {
+            return next(new ForbiddenError());
+        }
     }

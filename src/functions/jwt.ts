@@ -26,6 +26,13 @@ export const generateJwtRefreshToken = (payload: JWTUserPayload, secret: string)
     )
 }
 
-export const verifyJwt = (token: string, secret: string): JWTUserPayload =>{
-    return Jwt.verify(token, secret) as JWTUserPayload;
+export const verifyJwt = (token: string, secret: string): JWTUserPayload | null =>{
+    try {
+        return Jwt.verify(token, secret) as JWTUserPayload;
+    } catch (error: any) {
+        if (error.name === 'TokenExpiredError') {
+            return null;
+        }
+        throw error;
+    }
 }
