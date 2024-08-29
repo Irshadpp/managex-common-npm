@@ -3,6 +3,7 @@ import Jwt from "jsonwebtoken"
 export interface JWTUserPayload{
     id: string;
     role: string;
+    isActive: boolean;
     organization: string;
 }
 
