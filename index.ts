@@ -8,3 +8,4 @@ export * from "./src/middlewares/error-handler";
 export * from "./src/middlewares/requier-auth"
 
 export * from "./src/functions/jwt";
+export * from "./src/functions/cookie-utils"

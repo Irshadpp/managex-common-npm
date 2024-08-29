@@ -14,7 +14,6 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) =>{
         if(!secret){
             throw new Error("Can't access JWT_ACCESS_SECRET in requireAuth");
         }
-        
         if(authHead){
             const token = authHead.split(' ')[1];
 
