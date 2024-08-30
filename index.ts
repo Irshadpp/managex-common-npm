@@ -10,3 +10,10 @@ export * from "./src/middlewares/requier-auth"
 
 export * from "./src/functions/jwt";
 export * from "./src/functions/cookie-utils"
+
+export * from "./src/config/rabbitmq";
+
+export * from "./src/events/queues"
+export * from "./src/events/base-publisher"
+export * from "./src/events/base-consumer"
+export * from "./src/events/employee-created-event"
