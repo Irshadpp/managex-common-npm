@@ -10,7 +10,7 @@ export abstract class Consumer<T extends Event>{
 
     constructor(protected channel: amqp.Channel){}
 
-    abstract onMessage(data: T['data']): void;
+    abstract onMessage(data: T['data'], msg: amqp.Message): void;
 
     async consume(): Promise<void>{
         try {
@@ -20,7 +20,7 @@ export abstract class Consumer<T extends Event>{
             this.channel.consume(this.queue, (msg)=>{
                 if(msg){
                     const data = JSON.parse(msg.content.toString()) as T['data'];
-                    this.onMessage(data);
+                    this.onMessage(data, msg);
                     this.channel.ack(msg);
                 }
             })
