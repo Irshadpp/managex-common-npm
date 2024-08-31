@@ -21,7 +21,7 @@ export abstract class Consumer<T extends Event>{
                 if(msg){
                     const data = JSON.parse(msg.content.toString()) as T['data'];
                     this.onMessage(data, msg);
-                    this.channel.ack(msg);
+                    console.log(`Processed message successfully----------`)
                 }
             })
         } catch (error) {
