@@ -5,7 +5,7 @@ interface Event{
     data: any;
 }
 
-abstract class Consumer<T extends Event>{
+export abstract class Consumer<T extends Event>{
     abstract queue: T['queue']
 
     constructor(protected channel: amqp.Channel){}
