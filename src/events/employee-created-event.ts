@@ -15,14 +15,14 @@ export interface EmployeeCreatedEvent{
     queue: Queues.EmployeeCreated;
     data:{
         id: string;
-        fName: string;
-        lName: string;
+        fName?: string;
+        lName?: string;
         email: string;
         username: string;
-        phone: number;
+        phone?: number;
         role: Role;
         profileURL?: string;
-        dob: Date;
+        dob?: Date;
         salary?: number;
         designation?: string;
         employeeType?: EmpType;
