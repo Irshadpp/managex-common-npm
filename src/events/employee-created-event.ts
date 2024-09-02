@@ -11,7 +11,7 @@ interface Address{
     zipcode: string;
 }
 
-export interface EmployeeCreatedEvent{
+export interface UserUpdatedEvent{
     queue: Queues.EmployeeCreated;
     data:{
         id: string;
