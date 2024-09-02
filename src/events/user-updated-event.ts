@@ -10,7 +10,7 @@ interface Address{
 }
 
 export interface UserUpdatedEvent{
-    queue: Queues.UserCreated;
+    queue: Queues.UserUpdated;
     data:{
         fName?: string;
         lName?: string;
