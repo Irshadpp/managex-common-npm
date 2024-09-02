@@ -9,7 +9,7 @@ interface Address{
     zipcode: string;
 }
 
-export interface EmployeeUpdatedEvent{
+export interface UserUpdatedEvent{
     queue: Queues.UserUpdated;
     data:{
         fName?: string;
