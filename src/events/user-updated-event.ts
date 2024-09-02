@@ -12,6 +12,7 @@ interface Address{
 export interface UserUpdatedEvent{
     queue: Queues.UserUpdated;
     data:{
+        id: string;
         fName?: string;
         lName?: string;
         email?: string;
