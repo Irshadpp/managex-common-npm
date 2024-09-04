@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express"
 import { JWTUserPayload, verifyJwt } from "../functions/jwt";
 import { NotAuthorizedError } from "../errors/not-authorized-error";
 import { ForbiddenError } from "../errors/for-bidden-error";
-import {Model} from 'mongoose'
 import { BadRequestError } from "../errors/bad-request-error";
 import { CustomeError } from "../errors/custom-error";
 
@@ -12,8 +11,7 @@ declare module 'express-serve-static-core' {
     }
   }
 
-  export const requireAuth = (UserModel: Model<any>) => {
-    return async (req: Request, res: Response, next: NextFunction) => {
+export const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
         const token = req.cookies.accessToken;
         const secret = process.env.JWT_ACCESS_SECRET as string;
 
@@ -32,12 +30,6 @@ declare module 'express-serve-static-core' {
             if (!user) {
                 //if token expire
                 return next(new NotAuthorizedError());
-            }
-
-            const checkUser = await UserModel.findById(user.id);
-
-            if (!checkUser) {
-                return next(new BadRequestError("Account has been blocked"));
             }
 
             req.user = user;
@@ -80,4 +72,4 @@ declare module 'express-serve-static-core' {
         //     return next(new ForbiddenError());
         // }
     }
-}
+
