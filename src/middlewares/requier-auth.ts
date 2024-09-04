@@ -44,30 +44,3 @@ declare module 'express-serve-static-core' {
         }
     }
 }
-
-
-    // export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
-    //     const token = req.cookies.accessToken;
-    //     const secret = process.env.JWT_ACCESS_SECRET as string;
-      
-    //     if (!secret) {
-    //       throw new Error("Can't access JWT_ACCESS_SECRET in requireAuth");
-    //     }
-      
-    //     if (!token) {
-    //       return next(new NotAuthorizedError());
-    //     }
-      
-    //     try {
-    //       const user = verifyJwt(token, secret);
-      
-    //       if (!user) {
-    //         return next(new ForbiddenError());
-    //       }
-      
-    //       req.user = user;
-    //       next();
-    //     } catch (error) {
-    //       return next(new ForbiddenError());
-    //     }
-    //   };
