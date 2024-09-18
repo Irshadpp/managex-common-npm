@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express"
 import { JWTUserPayload, verifyJwt } from "../functions/jwt";
 import { NotAuthorizedError } from "../errors/not-authorized-error";
 import { ForbiddenError } from "../errors/for-bidden-error";
-import { BadRequestError } from "../errors/bad-request-error";
 import { CustomeError } from "../errors/custom-error";
 
 declare module 'express-serve-static-core' {
