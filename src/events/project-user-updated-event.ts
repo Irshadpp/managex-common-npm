@@ -1,7 +1,7 @@
 import { Queues } from "./queues";
 import { Role } from "./types/user-role";
 
-export interface ProjectUserCreatedEvent {
+export interface ProjectUserUpdatedEvent {
   queue: Queues.ProjectUserCreated;
   data: {
     id: string;

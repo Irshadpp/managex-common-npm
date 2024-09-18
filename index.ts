@@ -19,3 +19,5 @@ export * from "./src/events/base-consumer";
 export * from "./src/events/employee-created-event";
 export * from "./src/events/user-created-event";
 export * from "./src/events/user-updated-event";
+export * from "./src/events/project-user-created-event"
+export * from "./src/events/project-user-updated-event"
