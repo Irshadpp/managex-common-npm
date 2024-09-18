@@ -1,6 +1,6 @@
 {
   "name": "@ir-managex/common",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
