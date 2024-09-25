@@ -12,6 +12,7 @@ export * from "./src/middlewares/requier-auth";
 
 export * from "./src/functions/jwt";
 export * from "./src/functions/cookie-utils";
+export * from "./src/functions/send-response"
 
 export * from "./src/config/rabbitmq";
 
