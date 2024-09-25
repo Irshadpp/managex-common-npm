@@ -1,3 +1,5 @@
+export * from "./src/events/types/user-role";
+
 export * from "./src/errors/request-validation-error";
 export * from "./src/errors/bad-request-error";
 export * from "./src/errors/not-found-error";
