@@ -12,7 +12,7 @@ export * from "./src/middlewares/requier-auth";
 
 export * from "./src/functions/jwt";
 export * from "./src/functions/cookie-utils";
-export * from "./src/functions/send-response"
+export * from "./src/functions/send-response";
 
 export * from "./src/config/rabbitmq";
 
@@ -22,5 +22,7 @@ export * from "./src/events/base-consumer";
 export * from "./src/events/employee-created-event";
 export * from "./src/events/user-created-event";
 export * from "./src/events/user-updated-event";
-export * from "./src/events/project-user-created-event"
-export * from "./src/events/project-user-updated-event"
+export * from "./src/events/project-user-created-event";
+export * from "./src/events/project-user-updated-event";
+export * from "./src/events/chat-user-created-event"
+export * from "./src/events/chat-user-updated-event"

@@ -1,8 +1,8 @@
 import { Queues } from "./queues";
 import { Role } from "./types/user-role";
 
-export interface ChatUserCreatedEvent {
-  queue: Queues.ChatUserCreated;
+export interface ChatUserUpdatedEvent {
+  queue: Queues.ChatUserUpdated;
   data: {
     id: string;
     fName?: string;
