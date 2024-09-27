@@ -4,4 +4,6 @@ export enum Queues{
     UserUpdated = "user.updated",
     ProjectUserCreated = "projectUser.created",
     ProjectUserUpdated = "projectUser.updated",
+    ChatUserCreated = "chatUser.created",
+    ChatUserUpdated = "chatUser.updated",
 }
