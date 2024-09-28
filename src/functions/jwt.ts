@@ -2,6 +2,8 @@ import Jwt from "jsonwebtoken"
 
 export interface JWTUserPayload{
     id: string;
+    name: string;
+    profileURL: string | null;
     role: string;
     isActive: boolean;
     organization: string;
