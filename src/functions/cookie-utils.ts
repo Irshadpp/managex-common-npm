@@ -4,7 +4,7 @@ export const setCookie = (res: Response, name: string, value: string, options: a
     res.cookie(name, value, {
         httpOnly: true, 
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'None',
+        sameSite: 'strict',
         ...options
     });
 }
