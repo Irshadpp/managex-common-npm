@@ -25,7 +25,6 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
 
         try {
             const user = verifyJwt(token, secret);
-            console.log(user, "------------------------------user")
 
             if (!user) {
                 //if token expire
