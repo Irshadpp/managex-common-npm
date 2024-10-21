@@ -13,6 +13,7 @@ declare module 'express-serve-static-core' {
 export const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
         const token = req.cookies.accessToken;
         const secret = process.env.JWT_ACCESS_SECRET as string;
+        console.log("Access-token------------------------", token)
 
 
         if (!secret) {
