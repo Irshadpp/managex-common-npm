@@ -8,7 +8,7 @@ export const setCookie = (res: Response, name: string, value: string, options: a
         ...options
     });
 }
-//
+////
 export const clearCookie = (res: Response, name: string): void =>{
     res.cookie(name, '', {maxAge: 0});
 }
