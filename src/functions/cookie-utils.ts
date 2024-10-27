@@ -9,7 +9,7 @@ export const setCookie = (
   res.cookie(name, value, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "strict" : "None",
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
     ...options,
   });
 };
