@@ -8,8 +8,8 @@ export const setCookie = (
 ): void => {
   res.cookie(name, value, {
     httpOnly: true,
-    secure: false, // set to false for local development
-    sameSite: 'lax',
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "strict" : "None",
     ...options,
   });
 };
