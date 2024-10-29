@@ -14,10 +14,14 @@ export const checkSubscriptionLimits = async (
   currentCount: number
 ) => {
   try {
-    const customers = await stripe.customers.list({
-        limit: 100,
-      });
-  
+      const customers = await stripe.customers.list({
+          limit: 100,
+        });
+        
+        console.log("customersss.............", customers);
+        
+        
+        console.log("organizationId------------------>", organizationId)
       const organizationCustomers = customers.data.filter(
         (customer) => customer.metadata.organizationId === organizationId
       );
@@ -25,8 +29,11 @@ export const checkSubscriptionLimits = async (
 
     const subscriptionId = organizationCustomers[0]?.subscriptions?.data[0]?.id;
 
-    if (!subscriptionId) {
-      throw new Error("No active subscription found.");
+    if (!subscriptionId && resourceLimits["Free"][resourceType] > currentCount) {
+      return true;
+    }
+    if(!subscriptionId){
+        throw new Error("Subscription not found and free limit exceeded");
     }
 
     const subscription = await stripe.subscriptions.retrieve(subscriptionId);
