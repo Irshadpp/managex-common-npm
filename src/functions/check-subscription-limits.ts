@@ -8,45 +8,58 @@ const resourceLimits: any = {
   Business: { employees: Infinity, projects: Infinity },
 };
 
-export const checkSubscriptionLimits = async (
+ const checkSubscriptionLimits = async (
   organizationId: string,
   resourceType: "employees" | "projects",
   currentCount: number
 ) => {
   try {
+    console.log(resourceLimits["Free"][resourceType] , currentCount)
+    if (resourceLimits["Free"][resourceType] > currentCount) {
+      return true;
+    }
+
       const customers = await stripe.customers.list({
           limit: 100,
         });
         
-        console.log("customersss.............", customers);
+        console.log("organizationId------------------>", customers)
+        const organizationCustomer = customers.data.find(
+          (customer) => customer.metadata.organizationId === organizationId
+        );
         
-        
-        console.log("organizationId------------------>", organizationId)
-      const organizationCustomers = customers.data.filter(
-        (customer) => customer.metadata.organizationId === organizationId
-      );
+        console.log("customersss.............", organizationCustomer);
 
-
-    const subscriptionId = organizationCustomers[0]?.subscriptions?.data[0]?.id;
-
-    if (!subscriptionId && resourceLimits["Free"][resourceType] > currentCount) {
-      return true;
-    }
-    if(!subscriptionId){
-        throw new Error("Subscription not found and free limit exceeded");
-    }
-
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-    const product = await stripe.products.retrieve( subscription.items.data[0].price.product as string);
-    const subscriptionPlan = product.name;
-
-    const limit = resourceLimits[subscriptionPlan][resourceType];
-
-    if (currentCount >= limit) {
-      throw new Error(`Limit exceeded for ${resourceType}: ${limit}`);
-    }
-
-    return true;
+        if (!organizationCustomer) {
+          throw new Error("No customer found for the given organization.");
+        }
+    
+        const subscriptions = await stripe.subscriptions.list({
+          customer: organizationCustomer.id,
+          status: "active",
+          limit: 1
+        });
+    
+        const subscription = subscriptions.data[0];
+        if (!subscription) {
+          throw new Error("No active subscription found.");
+        }
+    
+        const product = await stripe.products.retrieve(
+          subscription.items.data[0].price.product as string
+        );
+        const subscriptionPlan = product.name;
+    
+        const limit = resourceLimits[subscriptionPlan]?.[resourceType];
+        if (limit === undefined) {
+          throw new Error(`No limit defined for the resource type: ${resourceType}`);
+        }
+    
+        if (currentCount >= limit) {
+          throw new Error(`Limit exceeded for ${resourceType}: ${limit}`);
+        }
+    
+        return true;
   } catch (error) {
     throw error;
   }
