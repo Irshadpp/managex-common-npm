@@ -8,7 +8,7 @@ const resourceLimits: any = {
   Business: { employees: Infinity, projects: Infinity },
 };
 
- const checkSubscriptionLimits = async (
+ export const checkSubscriptionLimits = async (
   organizationId: string,
   resourceType: "employees" | "projects",
   currentCount: number
