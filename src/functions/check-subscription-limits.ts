@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET!);
+const stripe = new Stripe(process.env.STRIPE_SECRET! || "sk_test_51Q9lFJKT4uALUwNbQ24h8dhZLpfWXmf9QjxUNajM2WuHZDt5MAtFfmYvAay0LfExDfFJU7JLzuIL1fGZPQBDfO1r00oAYX4HjQ");
 
 const resourceLimits: any = {
   Free: { employees: 5, projects: 2 },
