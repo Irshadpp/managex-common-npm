@@ -19,6 +19,7 @@ export interface UserUpdatedEvent{
         username?: string;
         phone?: number;
         role?: Role;
+        isActive?: boolean;
         profileURL?: string;
         dob?: Date;
         address?: Address;
