@@ -13,6 +13,8 @@ declare module 'express-serve-static-core' {
 export const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
         const token = req.cookies.accessToken;
         const secret = process.env.JWT_ACCESS_SECRET as string;
+        console.log("token======================>",token)
+        console.log("secret======================>",secret)
 
         if (!secret) {
             return next(new Error("Can't access JWT_ACCESS_SECRET in requireAuth"));
