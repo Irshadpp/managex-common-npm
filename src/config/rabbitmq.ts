@@ -23,10 +23,15 @@ export const connectToRabbitMQ = async (): Promise<amqp.Channel> => {
 
     while (!connection) {
         try {
-            // Connect to RabbitMQ
+
+            //For kubernetese cluster dployments
+            // const RABBITMQ_URL = 'amqp://guest:guest@rabbitmq-srv:5672';
+
+            //For render deployements(CloudAMPQ)
+            const RABBITMQ_URL = 'amqps://qldkexim:rzs2udSGOAFk6vRIB5tAohJAn7-317dc@duck.lmq.cloudamqp.com/qldkexim';
             
-            //
-            connection = await amqp.connect('amqp://guest:guest@rabbitmq-srv:5672');
+            // Connect to RabbitMQ
+            connection = await amqp.connect(RABBITMQ_URL);
             console.log('Connected to RabbitMQ successfully!');
         } catch (error) {
             attempts += 1;
