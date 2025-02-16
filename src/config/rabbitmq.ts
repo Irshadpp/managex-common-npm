@@ -24,6 +24,8 @@ export const connectToRabbitMQ = async (): Promise<amqp.Channel> => {
     while (!connection) {
         try {
             // Connect to RabbitMQ
+            
+            //
             connection = await amqp.connect('amqp://guest:guest@rabbitmq-srv:5672');
             console.log('Connected to RabbitMQ successfully!');
         } catch (error) {
