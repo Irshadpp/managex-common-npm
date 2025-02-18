@@ -5,8 +5,8 @@ export const setCookie = (res: Response, name: string, value: string, options: a
         httpOnly: true, 
         secure: true,
         sameSite: 'None',
-        path: "/",
-        domain: process.env.CLIENT_URL,
+        // path: "/",
+        // domain: process.env.CLIENT_URL,
         ...options
     });
 }
